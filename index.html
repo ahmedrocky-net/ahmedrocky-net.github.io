@@ -126,9 +126,9 @@ section{padding:4rem 0 2rem}
 .skills li:hover{transform:translateY(-6px) rotate(-3deg);background:var(--or);color:#fff;border-color:var(--or)}
 
 .contact{padding:5rem 0 6rem}
-.contact a{display:inline-block;font:900 clamp(1rem,4.4vw,2.6rem)/1.2 "Lato",sans-serif;text-decoration:none;white-space:nowrap;color:var(--or);
+.contact a.big{display:inline-block;font:900 clamp(1rem,4.4vw,2.6rem)/1.2 "Lato",sans-serif;text-decoration:none;white-space:nowrap;color:var(--or);
   background:linear-gradient(var(--or),var(--or)) 0 100%/0 .1em no-repeat;transition:background-size .5s}
-.contact a:hover{background-size:100% .1em}
+.contact a.big:hover{background-size:100% .1em}
 footer{padding:1.5rem 0 2rem;color:var(--muted);font-size:.9rem}
 
 .js .rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.9,.25,1)}
@@ -163,6 +163,33 @@ h2::after{content:"";display:block;width:3.2rem;height:4px;border-radius:4px;bac
 .js .rv:not(.in) .skills li{opacity:0}
 .rv.in .skills li{animation:pop .55s cubic-bezier(.3,1.6,.5,1) backwards;animation-delay:calc(var(--k,0)*90ms)}
 @keyframes pop{from{opacity:0;transform:scale(.4) translateY(24px)}}
+/* skills, timeline, contact menu */
+.skills{gap:.5rem}
+.skills li{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .8rem;border-radius:.6rem;font-size:.92rem}
+.skills li svg{width:1.15rem;height:1.15rem;fill:none;stroke:var(--or);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.skills li:hover svg{stroke:#fff}
+.edu{padding-bottom:1rem}
+.tl{position:relative;padding-left:1.8rem;display:grid;gap:1.1rem;max-width:34rem}
+.tl::before{content:"";position:absolute;left:.45rem;top:.4rem;bottom:.4rem;width:2px;background:linear-gradient(var(--or),transparent)}
+.tli{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.4rem;transition:border-color .3s,transform .4s cubic-bezier(.2,.9,.25,1)}
+.tli:hover{border-color:var(--or);transform:translateX(6px)}
+.dot{position:absolute;left:-1.74rem;top:1.45rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--or);box-shadow:0 0 0 4px rgba(255,106,0,.25);animation:dotp 2.2s ease-in-out infinite}
+@keyframes dotp{50%{box-shadow:0 0 0 9px rgba(255,106,0,0)}}
+.when{color:var(--or);font-weight:700;font-size:.9rem}
+.tli h3{margin:.15rem 0 0;font:900 1.3rem/1.2 "Lato",sans-serif}
+.tli p{margin:.2rem 0 0;color:var(--muted)}
+.mw{position:relative;display:inline-block;max-width:100%}
+.mp{position:absolute;left:0;top:calc(100% + .6rem);z-index:20;min-width:15rem;display:grid;background:var(--panel);border:1px solid var(--line);border-radius:.9rem;padding:.4rem;box-shadow:0 20px 50px -20px #000;opacity:0;transform:translateY(-8px) scale(.96);transform-origin:top left;pointer-events:none;transition:opacity .25s,transform .3s cubic-bezier(.3,1.4,.5,1)}
+.mp.open{opacity:1;transform:none;pointer-events:auto}
+.mp a,.mp button{all:unset;box-sizing:border-box;cursor:pointer;padding:.7rem .9rem;border-radius:.6rem;font:700 1rem "Lato",sans-serif;color:var(--ink);transition:background .2s,color .2s}
+.mp a:hover,.mp button:hover,.mp a:focus-visible,.mp button:focus-visible{background:var(--or);color:#fff}
+.tel{display:inline-flex;align-items:center;gap:.6rem;margin:1.6rem 0 0 0;font:700 1.25rem "Lato",sans-serif;text-decoration:none;color:var(--ink);padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:99px;transition:border-color .3s,transform .3s}
+.tels{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.tels .tel{margin:0}
+.tel.wa svg{stroke:#25d366}
+.tel.wa:hover{border-color:#25d366}
+.tel svg{width:1.2rem;height:1.2rem;fill:none;stroke:var(--or);stroke-width:1.8;stroke-linejoin:round}
+.tel:hover{border-color:var(--or);transform:translateY(-3px)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}.js .rv{opacity:1;transform:none}
@@ -172,13 +199,25 @@ h2::after{content:"";display:block;width:3.2rem;height:4px;border-radius:4px;bac
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-net" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M12 7v5M12 12l-6 5M12 12l6 5"/></symbol>
+<symbol id="i-router" viewBox="0 0 24 24"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01M8 13V8M16 13V8M8 8L6 5M16 8l2-3"/></symbol>
+<symbol id="i-pc" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="i-cable" viewBox="0 0 24 24"><path d="M8 3v4M12 3v4M6 7h8v3a4 4 0 0 1-8 0V7zM10 14v3a4 4 0 0 0 4 4h4"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></symbol>
+<symbol id="i-win" viewBox="0 0 24 24"><path d="M4 5.5l7-1v7H4zM13 4.3l7-1.3v8.5h-7zM4 13h7v7l-7-1zM13 13h7v8.2l-7-1.2z"/></symbol>
+<symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+</defs></svg>
 <div id="bar"></div>
 <canvas id="net" aria-hidden="true"></canvas>
 <div id="cur" aria-hidden="true"></div>
 <div class="wrap">
   <nav>
     <a class="logo" href="#top">AR.</a>
-    <div class="links"><a class="on" href="#top">Home</a><a href="#about">About me</a><a href="#learning">Learning</a><a href="#contact">Contact me</a></div>
+    <div class="links"><a class="on" href="#top">Home</a><a href="#about">About me</a><a href="#learning">Learning</a><a href="#education">Education</a><a href="#contact">Contact me</a></div>
     <a class="btn" href="#contact">Let's connect</a>
   </nav>
 
@@ -196,7 +235,7 @@ h2::after{content:"";display:block;width:3.2rem;height:4px;border-radius:4px;bac
       </div>
       <div class="cta"><a class="btn" href="#contact">Let's connect</a><a class="btn ghost" href="#learning">What I'm learning</a></div>
       <div class="stats">
-        <div><b data-to="4">0</b><span>Year CSE diploma</span></div>
+        <div><b>CSE</b><span>Diploma student</span></div>
         <div><b data-to="1">0</b><span>Networking internship</span></div>
         <div><b data-to="3">0</b><span>Courses in progress</span></div>
       </div>
@@ -224,20 +263,46 @@ h2::after{content:"";display:block;width:3.2rem;height:4px;border-radius:4px;bac
   <section id="about" class="about">
     <div class="rv">
       <h2>About <em>me</em></h2>
-      <p>Hi, I'm Ahmed Rocky from Chuadanga. I'm studying a 4-year diploma in CSE and doing a networking internship at CSL Academy. I'm learning CCNA, MikroTik and IT Essentials, and I can already handle troubleshooting, checking and cabling.</p>
+      <p>Hi, I'm Ahmed Rocky from Chuadanga. I'm studying CSE at Magura Government Polytechnic Institute and doing a networking internship at CSL Academy. I'm learning CCNA, MikroTik and IT Essentials, and I can already handle troubleshooting, checking and cabling.</p>
       <p>My goal is to become a skilled network engineer.</p>
     </div>
     <div class="rv">
       <h2><em>Skills</em></h2>
       <ul class="skills">
-        <li>CCNA</li><li>MikroTik</li><li>IT Essentials</li><li>Networking</li><li>Cabling</li><li>Troubleshooting</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-net"/></svg>CCNA</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-router"/></svg>MikroTik</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pc"/></svg>IT Essentials</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-globe"/></svg>Networking</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cable"/></svg>Cabling</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wrench"/></svg>Troubleshooting</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chip"/></svg>Computer Science / Engineering</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-server"/></svg>IT System Management</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-win"/></svg>Windows</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="education" class="edu">
+    <h2 class="rv">Education &amp; <em>experience</em></h2>
+    <div class="tl">
+      <div class="tli rv"><span class="dot"></span><span class="when">2022 – 2027</span><h3>Diploma in CSE</h3><p>Magura Government Polytechnic Institute</p></div>
+      <div class="tli rv"><span class="dot"></span><span class="when">Sep 2026 – Jan 2027 · Now</span><h3>Networking Internship</h3><p>CSL Academy</p></div>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <h2 class="rv">Let's <em>connect</em></h2>
-    <a class="rv" href="mailto:ahmedrocky206@gmail.com">ahmedrocky206@gmail.com</a>
+    <div class="mw rv">
+      <a class="big" id="mail" href="mailto:ahmedrocky206@gmail.com" aria-haspopup="true" aria-expanded="false">ahmedrocky206@gmail.com</a>
+      <div class="mp" id="mp" role="menu">
+        <a role="menuitem" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmedrocky206@gmail.com&su=Hello%20Ahmed" target="_blank" rel="noopener">✉ Write in Gmail</a>
+        <a role="menuitem" href="mailto:ahmedrocky206@gmail.com?subject=Hello%20Ahmed">↗ Open mail app</a>
+        <button role="menuitem" type="button" id="cp">⧉ Copy address</button>
+      </div>
+    </div>
+    <div class="tels rv">
+      <a class="tel wa" href="https://wa.me/8801810901271" target="_blank" rel="noopener" aria-label="WhatsApp 01810901271"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.2 18.6z"/><path d="M9.5 9c.3 2.5 2.5 4.7 5 5l1-1.2-1.8-.9-.8.7a4 4 0 0 1-1.7-1.7l.7-.8-.9-1.8z"/></svg>01810901271</a>
+    </div>
   </section>
 
   <footer>© 2026 Ahmed Rocky. <a href="https://github.com/ahmedrocky-net" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/ahmed-rocky-05a076431/" target="_blank" rel="noopener">LinkedIn</a></footer>
@@ -257,7 +322,7 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 // count-up stats
 function count(el){var to=+el.dataset.to,t0=null;if(rm){el.textContent=to+(el.dataset.suf||'');return;}
   function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(to*e)+(el.dataset.suf||'');if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
-setTimeout(function(){document.querySelectorAll('.stats b').forEach(count);},1500);
+setTimeout(function(){document.querySelectorAll('.stats b[data-to]').forEach(count);},1500);
 // progress bar + active link
 var bar=document.getElementById('bar');
 function prog(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')';}
@@ -312,6 +377,14 @@ if(!rm&&!matchMedia('(pointer:coarse)').matches){
   document.documentElement.addEventListener('pointerleave',function(){cur.classList.remove('on');});
   (function loop(){kx+=(tx-kx)*.3;ky+=(ty-ky)*.3;cur.style.transform='translate('+kx+'px,'+ky+'px)';requestAnimationFrame(loop);})();
 }
+// email menu
+var mail=document.getElementById('mail'),mp=document.getElementById('mp'),cp=document.getElementById('cp');
+function menu(o){mp.classList.toggle('open',o);mail.setAttribute('aria-expanded',o);}
+mail.addEventListener('click',function(e){e.preventDefault();menu(!mp.classList.contains('open'));});
+document.addEventListener('click',function(e){if(!e.target.closest('.mw'))menu(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')menu(false);});
+cp.addEventListener('click',function(){var t='ahmedrocky206@gmail.com',done=function(){cp.textContent='✓ Copied!';setTimeout(function(){cp.textContent='⧉ Copy address';menu(false);},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,done);else done();});
 </script>
 </body>
 </html>
